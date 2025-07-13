@@ -50,13 +50,7 @@ jobs:
         run: bun install
 
       - name: Build the app
-        run: bun build
-      - name: Generate sitemap
-        run: bun run generate-sitemap
-      - name: Generate robots.txt
-        run: bun run generate-robots-txt
-      - name: Generate Open Graph images
-        run: bun run generate-og-images
+        run: bun run build
 
   deploy:
     needs: [build-site]
