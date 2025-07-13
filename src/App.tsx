@@ -1,7 +1,4 @@
 import './App.css'
-import NotFound from './components/NotFound'
-import Navbar from './components/Nav'
-import Footer from './components/Footer'
 import AppRouter from './routes/AppRouter'
 
 function App() {
