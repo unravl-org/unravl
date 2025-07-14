@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unravel - Brand Template & Design System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/qzk1srk.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://use.typekit.net/qzk1srk.css');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --chalk-white: #f8f9fa;
+            --chalk-yellow: #ffd60a;
+            --chalk-blue: #3b82f6;
+            --chalk-green: #10b981;
+            --chalk-red: #ef4444;
+            --chalk-purple: #8b5cf6;
+            --chalk-orange: #f97316;
+            --board-dark: #1e293b;
+            --board-darker: #0f172a;
+            --chalk-dust: rgba(248, 249, 250, 0.1);
+        }
+        
+        /* Font families */
+        .font-heading {
+            font-family: "shantell-sans-bouncy", sans-serif;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .font-body {
+            font-family: "Zain", sans-serif;
+            font-weight: 600;
+            font-style: sans-serif;
+        }
+
+        .font-handwritten {
+            font-family: "shantell-sans-bouncy", sans-serif;
+            font-weight: 00;
+            font-style: normal;
+        }
+
+        
+        
+        h1, h2, h3, h4, h5, h6, .handwritten {
+            font-family: "shantell-sans-bouncy", sans-serif;
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            color: var(--chalk-white);
+            background-color: var(--board-dark);
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--board-darker) 0%, var(--board-dark) 100%);
+            position: relative;
+        }
+        
+        /* Chalkboard texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, var(--chalk-dust) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, var(--chalk-dust) 1px, transparent 1px),
+                radial-gradient(circle at 40% 40%, var(--chalk-dust) 1px, transparent 1px);
+            background-size: 80px 80px, 120px 120px, 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Subtle chalk smudges */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 10% 30%, rgba(248, 249, 250, 0.02) 20%, transparent 50%),
+                radial-gradient(ellipse at 90% 70%, rgba(248, 249, 250, 0.015) 15%, transparent 40%),
+                radial-gradient(ellipse at 50% 10%, rgba(248, 249, 250, 0.01) 25%, transparent 55%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Content layer */
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Chalk text effects */
+        .chalk-text {
+            color: var(--chalk-white);
+            text-shadow: 
+                0 0 5px rgba(248, 249, 250, 0.3),
+                0 0 10px rgba(248, 249, 250, 0.2),
+                0 0 20px rgba(248, 249, 250, 0.1);
+        }
+        
+        .chalk-yellow {
+            color: var(--chalk-yellow);
+            text-shadow: 
+                0 0 5px rgba(255, 214, 10, 0.4),
+                0 0 10px rgba(255, 214, 10, 0.3),
+                0 0 20px rgba(255, 214, 10, 0.2);
+        }
+        
+        .chalk-blue {
+            color: var(--chalk-blue);
+            text-shadow: 
+                0 0 5px rgba(59, 130, 246, 0.4),
+                0 0 10px rgba(59, 130, 246, 0.3);
+        }
+        
+        .chalk-green {
+            color: var(--chalk-green);
+            text-shadow: 
+                0 0 5px rgba(16, 185, 129, 0.4),
+                0 0 10px rgba(16, 185, 129, 0.3);
+        }
+        
+        .chalk-red {
+            color: var(--chalk-red);
+            text-shadow: 
+                0 0 5px rgba(239, 68, 68, 0.4),
+                0 0 10px rgba(239, 68, 68, 0.3);
+        }
+        
+        .chalk-purple {
+            color: var(--chalk-purple);
+            text-shadow: 
+                0 0 5px rgba(139, 92, 246, 0.4),
+                0 0 10px rgba(139, 92, 246, 0.3);
+        }
+        
+        .chalk-orange {
+            color: var(--chalk-orange);
+            text-shadow: 
+                0 0 5px rgba(249, 115, 22, 0.4),
+                0 0 10px rgba(249, 115, 22, 0.3);
+        }
+        
+        /* Cards and components */
+        .subject-card {
+            background: rgba(248, 249, 250, 0.03);
+            border: 1px solid rgba(248, 249, 250, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .subject-card:hover {
+            background: rgba(248, 249, 250, 0.05);
+            border-color: rgba(248, 249, 250, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Button styles */
+        .btn-chalk {
+            background: rgba(248, 249, 250, 0.1);
+            border: 2px solid rgba(248, 249, 250, 0.3);
+            color: var(--chalk-white);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-chalk:hover {
+            background: rgba(248, 249, 250, 0.15);
+            border-color: rgba(248, 249, 250, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-chalk-primary {
+            background: rgba(255, 214, 10, 0.2);
+            border-color: var(--chalk-yellow);
+            color: var(--chalk-yellow);
+        }
+        
+        .btn-chalk-primary:hover {
+            background: rgba(255, 214, 10, 0.3);
+        }
+        
+        .btn-chalk-blue {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--chalk-blue);
+            color: var(--chalk-blue);
+        }
+        
+        .btn-chalk-blue:hover {
+            background: rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-chalk-green {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--chalk-green);
+            color: var(--chalk-green);
+        }
+        
+        .btn-chalk-green:hover {
+            background: rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-chalk-red {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--chalk-red);
+            color: var(--chalk-red);
+        }
+        
+        .btn-chalk-red:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+        
+        /* Navigation */
+        .nav-link {
+            color: rgba(248, 249, 250, 0.7);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--chalk-white);
+        }
+        
+        /* Color swatch styles */
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            border: 2px solid rgba(248, 249, 250, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.05);
+            border-color: rgba(248, 249, 250, 0.4);
+        }
+        
+        .color-swatch::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            opacity: 0.8;
+        }
+        
+        /* Feature list styling - Clean version without bullets */
+        .feature-item {
+            padding: 0.5rem 0;
+            color: rgba(248, 249, 250, 0.8);
+            border-left: 2px solid var(--chalk-yellow);
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            border-left-color: var(--chalk-white);
+            color: var(--chalk-white);
+        }
+        
+        .feature-item-blue {
+            border-left-color: var(--chalk-blue);
+        }
+        
+        .feature-item-green {
+            border-left-color: var(--chalk-green);
+        }
+        
+        .feature-item-red {
+            border-left-color: var(--chalk-red);
+        }
+        
+        /* Typography examples */
+        .font-light { font-weight: 300; }
+        .font-normal { font-weight: 400; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        
+        /* Glow effects */
+        .glow-subtle {
+            box-shadow: 0 0 20px rgba(248, 249, 250, 0.05);
+        }
+        
+        .glow-yellow {
+            box-shadow: 0 0 30px rgba(255, 214, 10, 0.1);
+        }
+        
+        .glow-blue {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+        }
+        
+        .glow-green {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+        }
+        
+        /* Header glass effect */
+        .header-glass {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(248, 249, 250, 0.1);
+        }
+        
+        /* Code block styling */
+        .code-block {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(248, 249, 250, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            color: var(--chalk-green);
+            overflow-x: auto;
+            font-size: 0.875rem;
+        }
+        
+        /* Icon styles */
+        .icon-chemistry { color: var(--chalk-green); }
+        .icon-physics { color: var(--chalk-blue); }
+        .icon-cs { color: var(--chalk-yellow); }
+        .icon-biology { color: var(--chalk-red); }
+        .icon-math { color: var(--chalk-purple); }
+        .icon-engineering { color: var(--chalk-orange); }
+        
+        /* FontAwesome icon enhancements */
+        .fa-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .fa-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .handwritten {
+                font-size: 0.9em;
+            }
+            .color-swatch {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(248, 249, 250, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 214, 10, 0.3);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 214, 10, 0.5);
+        }
+        
+        /* Animation for chalk writing effect */
+        @keyframes chalkWrite {
+            0% { width: 0; opacity: 0; }
+            50% { opacity: 1; }
+            100% { width: 100%; opacity: 1; }
+        }
+        
+        .chalk-write::after {
+            animation: chalkWrite 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white font-body">
+    <div class="content">
+        <!-- Header -->
+        <header class="fixed top-0 w-full z-50 header-glass">
+            <div class="max-w-7xl mx-auto px-6 py-4">
+                <nav class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="text-3xl font-bold font-heading chalk-yellow">Unravel</div>
+                        <span class="text-sm chalk-text opacity-60 font-medium">Brand Template</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#colors" class="nav-link px-3 py-2 font-medium">Colors</a>
+                        <a href="#typography" class="nav-link px-3 py-2 font-medium">Typography</a>
+                        <a href="#components" class="nav-link px-3 py-2 font-medium">Components</a>
+                        <a href="#examples" class="nav-link px-3 py-2 font-medium">Examples</a>
+                    </div>
+                    
+                    <button class="md:hidden p-2 text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="pt-20">
+            <!-- Hero Section -->
+            <section class="py-16 px-6">
+                <div class="max-w-6xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 chalk-text leading-tight font-heading">
+                        Unravel Design System
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed font-normal" style="color: rgba(248, 249, 250, 0.8);">
+                        A comprehensive brand template showcasing the chalkboard-inspired design system that brings 
+                        interactive STEM learning to life through thoughtful visual design.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <button class="btn-chalk-primary px-8 py-3 rounded-lg font-semibold text-lg">
+                            <i class="fas fa-rocket mr-2"></i>Explore Design
+                        </button>
+                        <button class="btn-chalk px-8 py-3 rounded-lg font-semibold text-lg">
+                            <i class="fas fa-code mr-2"></i>View Implementation
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Brand Overview -->
+            <section class="py-16 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold chalk-text mb-4 font-heading">Brand Overview</h2>
+                        <p class="text-lg max-w-2xl mx-auto font-normal" style="color: rgba(248, 249, 250, 0.7);">
+                            Our design system is inspired by the classic chalkboard aesthetic, creating a warm, educational environment that makes learning feel approachable and engaging.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="subject-card rounded-xl p-8 glow-subtle text-center">
+                            <div class="text-4xl mb-4 chalk-yellow">
+                                <i class="fas fa-palette fa-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-bold chalk-yellow mb-2 font-heading">Visual Identity</h3>
+                            <p style="color: rgba(248, 249, 250, 0.8);" class="font-normal">
+                                Chalkboard-inspired design with chalk text effects, subtle textures, and educational iconography.
+                            </p>
+                        </div>
+                        <div class="subject-card rounded-xl p-8 glow-subtle text-center">
+                            <div class="text-4xl mb-4 chalk-blue">
+                                <i class="fas fa-font fa-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-bold chalk-blue mb-2 font-heading">Typography</h3>
+                            <p style="color: rgba(248, 249, 250, 0.8);" class="font-normal">
+                                Handwritten-style fonts for headings paired with clean, readable fonts for body text.
+                            </p>
+                        </div>
+                        <div class="subject-card rounded-xl p-8 glow-subtle text-center">
+                            <div class="text-4xl mb-4 chalk-green">
+                                <i class="fas fa-flask fa-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-bold chalk-green mb-2 font-heading">Subject Colors</h3>
+                            <p style="color: rgba(248, 249, 250, 0.8);" class="font-normal">
+                                Each STEM subject has its own chalk color, creating visual consistency and subject recognition.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Color Palette -->
+            <section id="colors" class="py-16 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold chalk-text mb-4 font-heading">Color Palette</h2>
+                        <p class="text-lg max-w-2xl mx-auto font-normal" style="color: rgba(248, 249, 250, 0.7);">
+                            Our color system is built around chalk colors that pop against the dark chalkboard background.
+                        </p>
+                    </div>
+                    
+                    <!-- Primary Colors -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">Primary Colors</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3" style="background-color: var(--chalk-white);"></div>
+                                <div class="text-sm font-semibold chalk-text">Chalk White</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#f8f9fa</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3" style="background-color: var(--chalk-yellow);"></div>
+                                <div class="text-sm font-semibold chalk-yellow">Chalk Yellow</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#ffd60a</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3" style="background-color: var(--board-dark);"></div>
+                                <div class="text-sm font-semibold chalk-text">Board Dark</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#1e293b</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3" style="background-color: var(--board-darker);"></div>
+                                <div class="text-sm font-semibold chalk-text">Board Darker</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#0f172a</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subject Colors -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">Subject Colors</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3 glow-green" style="background-color: var(--chalk-green);"></div>
+                                <div class="text-sm font-semibold chalk-green">Chemistry</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#10b981</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3 glow-blue" style="background-color: var(--chalk-blue);"></div>
+                                <div class="text-sm font-semibold chalk-blue">Physics</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#3b82f6</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3 glow-yellow" style="background-color: var(--chalk-yellow);"></div>
+                                <div class="text-sm font-semibold chalk-yellow">Computer Science</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#ffd60a</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3" style="background-color: var(--chalk-red);"></div>
+                                <div class="text-sm font-semibold chalk-red">Biology</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#ef4444</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3" style="background-color: var(--chalk-purple);"></div>
+                                <div class="text-sm font-semibold chalk-purple">Mathematics</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#8b5cf6</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="color-swatch mx-auto mb-3" style="background-color: var(--chalk-orange);"></div>
+                                <div class="text-sm font-semibold chalk-orange">Engineering</div>
+                                <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">#f97316</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Color Usage Examples -->
+                    <div class="subject-card rounded-xl p-8">
+                        <h3 class="text-xl font-bold chalk-text mb-4 font-heading">Color Usage Guidelines</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold chalk-yellow mb-2 font-heading">Primary Usage</h4>
+                                <div class="space-y-2 text-sm font-normal" style="color: rgba(248, 249, 250, 0.8);">
+                                    <div class="feature-item">Chalk White: Main text, headings, primary content</div>
+                                    <div class="feature-item">Chalk Yellow: Brand accent, highlights, primary actions</div>
+                                    <div class="feature-item">Board Dark/Darker: Background layers, containers</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold chalk-blue mb-2 font-heading">Subject-Specific Usage</h4>
+                                <div class="space-y-2 text-sm font-normal" style="color: rgba(248, 249, 250, 0.8);">
+                                    <div class="feature-item feature-item-blue">Use subject colors for icons, badges, and section headers</div>
+                                    <div class="feature-item feature-item-blue">Apply glow effects for enhanced visibility</div>
+                                    <div class="feature-item feature-item-blue">Maintain contrast ratios for accessibility</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Typography -->
+            <section id="typography" class="py-16 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold chalk-text mb-4 font-heading">Typography</h2>
+                        <p class="text-lg max-w-2xl mx-auto font-normal" style="color: rgba(248, 249, 250, 0.7);">
+                            Our typography system combines Shantell Sans for headings with Inter for clean, readable body text.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <!-- Font Families -->
+                        <div class="subject-card rounded-xl p-8">
+                            <h3 class="text-xl font-bold chalk-text mb-6 font-heading">Font Families</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="text-2xl font-heading chalk-yellow mb-2">Shantell Sans Bouncy</div>
+                                    <div class="text-sm font-normal" style="color: rgba(248, 249, 250, 0.6);">Used for headings and brand elements</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-body chalk-text mb-2">Inter</div>
+                                    <div class="text-sm font-normal" style="color: rgba(248, 249, 250, 0.6);">Used for body text and UI elements</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Font Hierarchy -->
+                        <div class="subject-card rounded-xl p-8">
+                            <h3 class="text-xl font-bold chalk-text mb-6 font-heading">Font Hierarchy</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="text-4xl font-bold chalk-text mb-1 font-heading">Heading 1</div>
+                                    <div class="text-sm font-normal" style="color: rgba(248, 249, 250, 0.6);">4xl • Bold • Primary headings</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold chalk-text mb-1 font-heading">Heading 2</div>
+                                    <div class="text-sm font-normal" style="color: rgba(248, 249, 250, 0.6);">3xl • Bold • Section headings</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-semibold chalk-text mb-1 font-heading">Heading 3</div>
+                                    <div class="text-sm font-normal" style="color: rgba(248, 249, 250, 0.6);">xl • Semibold • Subsection headings</div>
+                                </div>
+                                <div>
+                                    <div class="text-base font-normal chalk-text mb-1 font-body">Body Text</div>
+                                    <div class="text-sm font-normal" style="color: rgba(248, 249, 250, 0.6);">base • Normal • Main content</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Text Effects -->
+                    <div class="subject-card rounded-xl p-8">
+                        <h3 class="text-xl font-bold chalk-text mb-6 font-heading">Chalk Text Effects</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="font-semibold chalk-yellow mb-4 font-heading">Standard Chalk Effects</h4>
+                                <div class="space-y-3">
+                                    <div class="text-xl chalk-text font-heading">Standard Chalk Text</div>
+                                    <div class="text-xl chalk-yellow font-heading">Highlighted Chalk Yellow</div>
+                                    <div class="text-xl chalk-blue font-heading">Subject Chalk Blue</div>
+                                    <div class="text-xl chalk-green font-heading">Subject Chalk Green</div>
+                                    <div class="text-xl chalk-red font-heading">Subject Chalk Red</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold chalk-blue mb-4 font-heading">Body Text Examples</h4>
+                                <div class="space-y-3">
+                                    <div class="text-base chalk-text font-body">Clean body text using Inter font</div>
+                                    <div class="text-sm chalk-text font-body opacity-80">Secondary text with reduced opacity</div>
+                                    <div class="text-xs chalk-text font-body opacity-60">Caption text for additional information</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Components -->
+            <section id="components" class="py-16 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold chalk-text mb-4 font-heading">Components</h2>
+                        <p class="text-lg max-w-2xl mx-auto font-normal" style="color: rgba(248, 249, 250, 0.7);">
+                            Reusable UI components that maintain the chalkboard aesthetic throughout the platform.
+                        </p>
+                    </div>
+                    
+                    <!-- Buttons -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">Buttons</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="subject-card rounded-xl p-6">
+                                <h4 class="font-semibold chalk-text mb-4 font-heading">Primary Buttons</h4>
+                                <div class="space-y-3">
+                                    <button class="btn-chalk-primary px-6 py-2 rounded-lg w-full font-medium">
+                                        <i class="fas fa-star mr-2"></i>Primary Action
+                                    </button>
+                                    <button class="btn-chalk px-6 py-2 rounded-lg w-full font-medium">
+                                        <i class="fas fa-arrow-right mr-2"></i>Secondary Action
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="subject-card rounded-xl p-6">
+                                <h4 class="font-semibold chalk-text mb-4 font-heading">Subject Buttons</h4>
+                                <div class="space-y-3">
+                                    <button class="btn-chalk-blue px-6 py-2 rounded-lg w-full font-medium">
+                                        <i class="fas fa-atom mr-2"></i>Physics
+                                    </button>
+                                    <button class="btn-chalk-green px-6 py-2 rounded-lg w-full font-medium">
+                                        <i class="fas fa-flask mr-2"></i>Chemistry
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="subject-card rounded-xl p-6">
+                                <h4 class="font-semibold chalk-text mb-4 font-heading">Additional Buttons</h4>
+                                <div class="space-y-3">
+                                    <button class="btn-chalk-red px-6 py-2 rounded-lg w-full font-medium">
+                                        <i class="fas fa-dna mr-2"></i>Biology
+                                    </button>
+                                    <button class="btn-chalk px-6 py-2 rounded-lg w-full text-sm font-medium">
+                                        <i class="fas fa-info mr-2"></i>Small Button
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cards -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">Cards</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="subject-card rounded-xl p-6 glow-subtle">
+                                <div class="text-3xl mb-3 chalk-green">
+                                    <i class="fas fa-flask fa-icon"></i>
+                                </div>
+                                <h4 class="text-lg font-bold chalk-green mb-2 font-heading">Chemistry Card</h4>
+                                <p style="color: rgba(248, 249, 250, 0.8);" class="text-sm mb-4 font-normal">
+                                    Standard subject card with hover effects and glass morphism background.
+                                </p>
+                                <button class="btn-chalk-green px-4 py-2 rounded text-sm font-medium">
+                                    <i class="fas fa-arrow-right mr-1"></i>Explore
+                                </button>
+                            </div>
+                            <div class="subject-card rounded-xl p-6 glow-blue">
+                                <div class="text-3xl mb-3 chalk-blue">
+                                    <i class="fas fa-atom fa-icon"></i>
+                                </div>
+                                <h4 class="text-lg font-bold chalk-blue mb-2 font-heading">Physics Card</h4>
+                                <p style="color: rgba(248, 249, 250, 0.8);" class="text-sm mb-4 font-normal">
+                                    Enhanced card with colored glow effect for emphasis.
+                                </p>
+                                <button class="btn-chalk-blue px-4 py-2 rounded text-sm font-medium">
+                                    <i class="fas fa-arrow-right mr-1"></i>Explore
+                                </button>
+                            </div>
+                            <div class="subject-card rounded-xl p-6">
+                                <div class="text-3xl mb-3 chalk-yellow">
+                                    <i class="fas fa-laptop-code fa-icon"></i>
+                                </div>
+                                <h4 class="text-lg font-bold chalk-yellow mb-2 font-heading">CS Card</h4>
+                                <p style="color: rgba(248, 249, 250, 0.8);" class="text-sm mb-4 font-normal">
+                                    Standard card without additional glow effects.
+                                </p>
+                                <button class="btn-chalk-primary px-4 py-2 rounded text-sm font-medium">
+                                    <i class="fas fa-arrow-right mr-1"></i>Explore
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation */
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">Navigation</h3>
+                        <div class="subject-card rounded-xl p-6">
+                            <h4 class="font-semibold chalk-text mb-4 font-heading">Navigation Links</h4>
+                            <div class="flex flex-wrap gap-6">
+                                <a href="#" class="nav-link px-3 py-2 font-medium">
+                                    <i class="fas fa-home mr-2"></i>Home
+                                </a>
+                                <a href="#" class="nav-link px-3 py-2 font-medium">
+                                    <i class="fas fa-info-circle mr-2"></i>About
+                                </a>
+                                <a href="#" class="nav-link px-3 py-2 font-medium">
+                                    <i class="fas fa-book mr-2"></i>Subjects
+                                </a>
+                                <a href="#" class="nav-link px-3 py-2 font-medium">
+                                    <i class="fas fa-code-branch mr-2"></i>Contribute
+                                </a>
+                                <a href="#" class="nav-link px-3 py-2 font-medium">
+                                    <i class="fas fa-file-alt mr-2"></i>Documentation
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Icons and Symbols -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">Subject Icons</h3>
+                        <div class="subject-card rounded-xl p-8">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+                                <div>
+                                    <div class="text-4xl icon-chemistry mb-2">
+                                        <i class="fas fa-flask fa-icon"></i>
+                                    </div>
+                                    <div class="text-sm chalk-green font-medium">Chemistry</div>
+                                </div>
+                                <div>
+                                    <div class="text-4xl icon-physics mb-2">
+                                        <i class="fas fa-atom fa-icon"></i>
+                                    </div>
+                                    <div class="text-sm chalk-blue font-medium">Physics</div>
+                                </div>
+                                <div>
+                                    <div class="text-4xl icon-cs mb-2">
+                                        <i class="fas fa-laptop-code fa-icon"></i>
+                                    </div>
+                                    <div class="text-sm chalk-yellow font-medium">Computer Science</div>
+                                </div>
+                                <div>
+                                    <div class="text-4xl icon-biology mb-2">
+                                        <i class="fas fa-dna fa-icon"></i>
+                                    </div>
+                                    <div class="text-sm chalk-red font-medium">Biology</div>
+                                </div>
+                                <div>
+                                    <div class="text-4xl icon-math mb-2">
+                                        <i class="fas fa-calculator fa-icon"></i>
+                                    </div>
+                                    <div class="text-sm chalk-purple font-medium">Mathematics</div>
+                                </div>
+                                <div>
+                                    <div class="text-4xl icon-engineering mb-2">
+                                        <i class="fas fa-cogs fa-icon"></i>
+                                    </div>
+                                    <div class="text-sm chalk-orange font-medium">Engineering</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Implementation Examples -->
+            <section id="examples" class="py-16 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold chalk-text mb-4 font-heading">Implementation Examples</h2>
+                        <p class="text-lg max-w-2xl mx-auto font-normal" style="color: rgba(248, 249, 250, 0.7);">
+                            See how these design elements come together in real-world implementations.
+                        </p>
+                    </div>
+                    
+                    <!-- CSS Variables -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">CSS Variables</h3>
+                        <div class="subject-card rounded-xl p-6">
+                            <div class="code-block">
+:root {
+    --chalk-white: #f8f9fa;
+    --chalk-yellow: #ffd60a;
+    --chalk-blue: #3b82f6;
+    --chalk-green: #10b981;
+    --chalk-red: #ef4444;
+    --chalk-purple: #8b5cf6;
+    --chalk-orange: #f97316;
+    --board-dark: #1e293b;
+    --board-darker: #0f172a;
+    --chalk-dust: rgba(248, 249, 250, 0.1);
+}
+
+/* Font families */
+.font-heading {
+    font-family: "shantell-sans-bouncy", sans-serif;
+}
+
+.font-body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sample Layout -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold chalk-text mb-6 font-heading">Sample Layout Implementation</h3>
+                        <div class="subject-card rounded-xl p-8 glow-subtle">
+                            <div class="flex items-center justify-between mb-6">
+                                <h4 class="text-xl font-bold chalk-yellow font-heading">Interactive Periodic Table</h4>
+                                <span class="text-sm chalk-green uppercase tracking-wide font-medium">Chemistry Tool</span>
+                            </div>
+                            <p class="mb-6 leading-relaxed font-normal" style="color: rgba(248, 249, 250, 0.8);">
+                                Explore the elements that make up our universe. Click on any element to see detailed information about its properties, electron configuration, and common compounds.
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                <div class="text-center p-3 rounded border border-gray-600">
+                                    <div class="text-2xl chalk-text font-bold font-heading">H</div>
+                                    <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">Hydrogen</div>
+                                </div>
+                                <div class="text-center p-3 rounded border border-gray-600">
+                                    <div class="text-2xl chalk-text font-bold font-heading">He</div>
+                                    <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">Helium</div>
+                                </div>
+                                <div class="text-center p-3 rounded border border-gray-600">
+                                    <div class="text-2xl chalk-text font-bold font-heading">Li</div>
+                                    <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">Lithium</div>
+                                </div>
+                                <div class="text-center p-3 rounded border border-gray-600">
+                                    <div class="text-2xl chalk-text font-bold font-heading">Be</div>
+                                    <div class="text-xs font-normal" style="color: rgba(248, 249, 250, 0.6);">Beryllium</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button class="btn-chalk-green px-4 py-2 rounded font-medium">
+                                    <i class="fas fa-search mr-2"></i>Explore Elements
+                                </button>
+                                <button class="btn-chalk px-4 py-2 rounded font-medium">
+                                    <i class="fas fa-list mr-2"></i>View Properties
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Design Guidelines -->
+                    <div class="subject-card rounded-xl p-8">
+                        <h3 class="text-xl font-bold chalk-text mb-6 font-heading">Design Guidelines</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="font-semibold chalk-yellow mb-3 font-heading">
+                                    <i class="fas fa-check-circle mr-2"></i>Best Practices
+                                </h4>
+                                <div class="space-y-2 text-sm font-normal" style="color: rgba(248, 249, 250, 0.8);">
+                                    <div class="feature-item">Use chalk text effects for all primary content</div>
+                                    <div class="feature-item">Maintain consistent subject color associations</div>
+                                    <div class="feature-item">Apply glass morphism effects to cards and containers</div>
+                                    <div class="feature-item">Include subtle texture overlays for chalkboard feel</div>
+                                    <div class="feature-item">Use handwritten fonts for headings, clean fonts for body</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold chalk-red mb-3 font-heading">
+                                    <i class="fas fa-times-circle mr-2"></i>Things to Avoid
+                                </h4>
+                                <div class="space-y-2 text-sm font-normal" style="color: rgba(248, 249, 250, 0.8);">
+                                    <div class="feature-item feature-item-red">Don't use bright white backgrounds</div>
+                                    <div class="feature-item feature-item-red">Avoid mixing subject colors randomly</div>
+                                    <div class="feature-item feature-item-red">Don't remove the chalkboard texture</div>
+                                    <div class="feature-item feature-item-red">Avoid overly bright or neon colors</div>
+                                    <div class="feature-item feature-item-red">Don't use inconsistent typography</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Download & Usage -->
+            <section class="py-16 px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <div class="subject-card rounded-2xl p-12 glow-subtle">
+                        <h2 class="text-3xl md:text-4xl font-bold chalk-text mb-4 font-heading">Ready to Implement?</h2>
+                        <p class="text-lg mb-8 max-w-2xl mx-auto leading-relaxed font-normal" style="color: rgba(248, 249, 250, 0.8);">
+                            Download the complete design system assets and start building with the Unravel chalkboard aesthetic.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button class="btn-chalk-primary px-8 py-3 rounded-lg font-semibold text-lg">
+                                <i class="fas fa-download mr-2"></i>Download Assets
+                            </button>
+                            <button class="btn-chalk px-8 py-3 rounded-lg font-semibold text-lg">
+                                <i class="fas fa-book mr-2"></i>View Documentation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="border-t border-gray-700 py-12 px-6" style="background: rgba(15, 23, 42, 0.8);">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="md:col-span-2">
+                        <div class="text-2xl font-bold font-heading chalk-yellow mb-4">Unravel Design System</div>
+                        <p style="color: rgba(248, 249, 250, 0.6);" class="mb-6 max-w-md leading-relaxed font-normal">
+                            Comprehensive brand template for creating educational experiences with the chalkboard aesthetic.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold chalk-text mb-4 font-heading">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#colors" class="nav-link font-normal">Color Palette</a></li>
+                            <li><a href="#typography" class="nav-link font-normal">Typography</a></li>
+                            <li><a href="#components" class="nav-link font-normal">Components</a></li>
+                            <li><a href="#examples" class="nav-link font-normal">Examples</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold chalk-text mb-4 font-heading">Documentation</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="nav-link font-normal">Style Guide</a></li>
+                            <li><a href="#" class="nav-link font-normal">Asset Library</a></li>
+                            <li><a href="#" class="nav-link font-normal">Implementation</a></li>
+                            <li><a href="#" class="nav-link font-normal">Contributing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p style="color: rgba(248, 249, 250, 0.5);" class="font-normal">
+                        © 2024 Unravel. Open source design system for interactive STEM learning.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Color swatch hover effects
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotateZ(5deg)';
+            });
+            
+            swatch.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotateZ(0deg)';
+            });
+        });
+        
+        // Button interaction effects
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // FontAwesome icon hover effects
+        document.querySelectorAll('.fa-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.2) rotateY(15deg)';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotateY(0deg)';
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                console.log('Mobile menu toggled');
+            });
+        }
+    </script>
+</body>
+</html>
