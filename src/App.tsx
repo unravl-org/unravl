@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gray-100 dark:bg-gray-600">
+    <div className="flex flex-col min-h-screen min-w-screen">
       <AppRouter />
     </div>
     </>
