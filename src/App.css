@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@import "./animations";
+@plugin "tailwindcss-motion";
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(:not(.dark), :not(.dark *)));
+
+/* Headings with classic serif font - academic style */
+h1, h2, h3, h4, h5, h6, .logo {
+  font-family: "chilanka", "Source Serif 4", serif;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+/* Body text with highly readable sans-serif */
+body {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+
+:root {
+  /* Primary Theme Colors - Academic Blue Palette */
+  --color-primary: hsl(220, 26%, 14%); /* deep charcoal */
+  --color-secondary: hsl(220, 14%, 96%); /* soft off-white */
+  --color-accent: hsl(212, 84%, 49%); /* classic academic blue */
+  
+  /* Supporting Colors */
+  --color-tertiary: hsl(220, 13%, 69%); /* sophisticated gray */
+  --color-muted: hsl(220, 9%, 46%); /* muted text gray */
+  
+  /* Status Colors - Refined and professional */
+  --color-info: hsl(212, 84%, 49%); /* matches accent */
+  --color-success: hsl(142, 51%, 48%); /* forest green */
+  --color-warning: hsl(38, 75%, 54%); /* amber */
+  --color-danger: hsl(0, 65%, 51%); /* classic red */
+  
+  /* Background Colors */
+  --color-background: hsl(0, 0%, 100%); /* pure white */
+  --color-background-secondary: hsl(220, 14%, 98%); /* barely tinted white */
+  --color-background-dark: hsl(220, 26%, 14%); /* deep navy */
+  --color-surface: hsl(220, 14%, 96%); /* card backgrounds */
+  
+  /* Academic accent colors */
+  --color-navy: hsl(212, 84%, 49%); /* primary blue */
+  --color-slate: hsl(215, 28%, 17%); /* dark slate */
+  --color-cream: hsl(48, 100%, 96%); /* warm cream */
+  
+  /* Typography */
+  --font-heading: 'Source Serif 4', serif;
+  --font-body: 'Source Sans 3', sans-serif;
+  
+  /* Spacing & Layout */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Shadows - Clean and minimal */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.1);
+  
+  /* Border Radius - Clean and modern */
+  --border-radius-sm: 0.25rem;
+  --border-radius: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+.dark {
+  /* Dark mode color adjustments */
+  --color-primary: hsl(220, 14%, 96%); /* light text */
+  --color-secondary: hsl(220, 26%, 14%); /* dark surface */
+  --color-accent: hsl(212, 84%, 65%); /* brighter blue for dark mode */
+  
+  --color-tertiary: hsl(220, 13%, 31%); /* darker gray */
+  --color-muted: hsl(220, 9%, 54%); /* lighter muted text */
+  
+  /* Status colors adjusted for dark mode */
+  --color-info: hsl(212, 84%, 65%);
+  --color-success: hsl(142, 51%, 58%);
+  --color-warning: hsl(38, 75%, 64%);
+  --color-danger: hsl(0, 65%, 61%);
+  
+  /* Dark backgrounds */
+  --color-background: hsl(220, 26%, 14%); /* main dark bg */
+  --color-background-secondary: hsl(220, 26%, 18%); /* secondary dark */
+  --color-background-dark: hsl(220, 26%, 10%); /* deeper dark */
+  --color-surface: hsl(220, 26%, 18%); /* card backgrounds */
+  
+  /* Academic dark colors */
+  --color-navy: hsl(212, 84%, 65%); /* lighter blue */
+  --color-slate: hsl(220, 14%, 96%); /* light text */
+  --color-cream: hsl(220, 26%, 18%); /* dark cream equivalent */
+  
+  /* Enhanced shadows for dark mode */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.35);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+@theme {
+  /* Map CSS variables to Tailwind theme */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-tertiary: var(--color-tertiary);
+  --color-muted: var(--color-muted);
+  
+  --color-info: var(--color-info);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  
+  --color-background: var(--color-background);
+  --color-background-secondary: var(--color-background-secondary);
+  --color-background-dark: var(--color-background-dark);
+  --color-surface: var(--color-surface);
+  
+  --color-navy: var(--color-navy);
+  --color-slate: var(--color-slate);
+  --color-cream: var(--color-cream);
+  
+  --color-text: var(--color-primary);
+  --color-text-secondary: var(--color-muted);
+  --color-text-tertiary: var(--color-tertiary);
+  
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-elevated: var(--shadow-elevated);
+  
+  --border-radius-sm: var(--border-radius-sm);
+  --border-radius: var(--border-radius);
+  --border-radius-lg: var(--border-radius-lg);
+  --border-radius-xl: var(--border-radius-xl);
+  
+  --transition-fast: var(--transition-fast);
+  --transition-normal: var(--transition-normal);
+  --transition-slow: var(--transition-slow);
+}
+
+/* Smooth scrolling and focus states */
+html {
+  scroll-behavior: smooth;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}

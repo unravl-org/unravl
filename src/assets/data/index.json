@@ -1,0 +1,329 @@
+[
+    {
+      "topic": "Physics",
+      "description": "Explore the fundamental laws of nature.",
+      "icon": "atom",
+      "style": "bg-gradient-to-r from-blue-500 to-purple-500 text-white",
+      "applications": [
+        {
+          "name": "Single Spring Oscillation",
+          "description": "Drag and release a mass on a spring to see harmonic motion.",
+          "image": "https://example.com/single-spring.png",
+          "tags": ["Physics", "Simulation"],
+          "link": "/#/topics/phy/single-spring",
+          "status": "inactive"
+        },
+        {
+          "name": "Projectile Motion",
+          "description": "Set launch angle and velocity; visualize projectile trajectory.",
+          "image": "https://example.com/projectile-motion.png",
+          "tags": ["Physics", "Simulation"],
+          "link": "/#/topics/phy/projectile-motion",
+          "status": "active"
+        },
+        {
+          "name": "Free Fall & Gravity",
+          "description": "Drop an object from different heights; display fall time and impact velocity.",
+          "image": "https://example.com/free-fall.png",
+          "tags": ["Physics", "Simulation"],
+          "link": "/#/topics/phy/free-fall",
+          "status": "active"
+        },
+        {
+          "name": "2 Body Gravity Simulation",
+          "description": "Two masses orbiting each other under gravity.",
+          "image": "https://example.com/2-body-simulation.png",
+          "tags": ["Physics", "Simulation"],
+          "link": "/#/topics/phy/2-body-simulation",
+          "status": "active"
+        },
+        {
+          "name": "Pendulum Swing",
+          "description": "Change string length and mass; visualize pendulum oscillations.",
+          "image": "https://example.com/pendulum.png",
+          "tags": ["Physics", "Simulation"],
+          "link": "/#/topics/phy/pendulum",
+          "status": "active"
+        },
+        {
+          "name": "Wave on a String",
+          "description": "Animate sine waves traveling on a string; adjust amplitude and frequency.",
+          "image": "https://example.com/wave-string.png",
+          "tags": ["Physics", "Simulation"],
+          "link": "/#/topics/phy/wave-string",
+          "status": "active"
+        },
+        {
+          "name": "Collision Simulator (Elastic)",
+          "description": "Simulate two balls colliding elastically; control masses and velocities.",
+          "image": "https://example.com/collision.png",
+          "tags": ["Physics", "Simulation"],
+          "link": "/#/topics/phy/collision",
+          "status": "active"
+        },
+        {
+          "name": "Inclined Plane Motion",
+          "description": "Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction ",
+          "tags": ["Physics", "Simulation", "Simulation", "Simulation", "Simulation", "pp"],
+          "link": "/#/topics/phy/inclined-plane",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "topic": "Chemistry",
+      "description": "Dive into the world of molecules and reactions.",
+      "icon": "flask",
+      "style": "bg-gradient-to-r from-amber-500 to-yellow-500 text-white",
+      "applications": [
+        {
+          "name": "Interactive Periodic Table",
+          "description": "Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction Block slides down an incline; adjust angle and friction ",
+          "image": "https://github.com/ru4en/interactive-periodic-table/blob/main/ipt.png?raw=true",
+          "tags": ["Chemistry", "Interactive"],
+          "link": "https://interactive-periodic-table.rubenlopes.uk/",
+          "status": "active"
+        },
+        {
+          "name": "Molecule Builder",
+          "description": "Drag and connect atoms to create molecules like water or CO2.",
+          "image": "https://example.com/molecule-builder.png",
+          "tags": ["Chemistry", "Simulation"],
+          "link": "/#/topics/chem/molecule-builder",
+          "status": "active"
+        },
+        {
+          "name": "pH Scale Slider",
+          "description": "Slide through pH values to see acid/base color changes and info.",
+          "image": "https://example.com/ph-scale.png",
+          "tags": ["Chemistry", "Interactive"],
+          "link": "/#/topics/chem/ph-scale",
+          "status": "active"
+        },
+        {
+          "name": "States of Matter Animation",
+          "description": "Visualize particles in solid, liquid, and gas states.",
+          "image": "https://example.com/states-matter.png",
+          "tags": ["Chemistry", "Animation"],
+          "link": "/#/topics/chem/states-matter",
+          "status": "active"
+        },
+        {
+          "name": "Element Quiz",
+          "description": "Quiz to match element symbols to their names.",
+          "image": "https://example.com/element-quiz.png",
+          "tags": ["Chemistry", "Quiz"],
+          "link": "/#/topics/chem/quiz",
+          "status": "active"
+        },
+        {
+          "name": "Reaction Simulator",
+          "description": "Mix chemicals and observe simulated reactions with color and gas effects.",
+          "image": "https://example.com/reaction-simulator.png",
+          "tags": ["Chemistry", "Simulation"],
+          "link": "/#/topics/chem/reaction-simulator",
+          "status": "active"
+        },
+        {
+          "name": "Acid-Base Titration Curve",
+          "description": "Simulate pH changes during titration and identify endpoints.",
+          "image": "https://example.com/titration.png",
+          "tags": ["Chemistry", "Simulation"],
+          "link": "/#/topics/chem/titration",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "topic": "Mathematics",
+      "description": "Master concepts from numbers to geometry and probability.",
+      "icon": "calculator",
+      "style": "bg-gradient-to-r from-blue-400 to-green-400 text-white",
+      "applications": [
+        {
+          "name": "Graph Plotter",
+          "description": "Enter functions and see live plotted graphs.",
+          "image": "https://example.com/graph-plotter.png",
+          "tags": ["Mathematics", "Visualization"],
+          "link": "/#/topics/math/graph-plotter",
+          "status": "active"
+        },
+        {
+          "name": "Number Line Game",
+          "description": "Drag numbers to their correct positions on the number line.",
+          "image": "https://example.com/number-line.png",
+          "tags": ["Mathematics", "Interactive"],
+          "link": "/#/topics/math/number-line",
+          "status": "active"
+        },
+        {
+          "name": "Shape Builder",
+          "description": "Draw basic shapes and calculate their area and perimeter.",
+          "image": "https://example.com/shape-builder.png",
+          "tags": ["Mathematics", "Interactive"],
+          "link": "/#/topics/math/shape-builder",
+          "status": "active"
+        },
+        {
+          "name": "Probability Spinner",
+          "description": "Spin a wheel with different sections to learn probability.",
+          "image": "https://example.com/probability-spinner.png",
+          "tags": ["Mathematics", "Simulation"],
+          "link": "/#/topics/math/probability-spinner",
+          "status": "active"
+        },
+        {
+          "name": "Times Table Practice",
+          "description": "Quick multiplication quizzes for practice.",
+          "image": "https://example.com/times-table.png",
+          "tags": ["Mathematics", "Quiz"],
+          "link": "/#/topics/math/times-table",
+          "status": "active"
+        },
+        {
+          "name": "Fractal Explorer",
+          "description": "Generate and zoom into fractals like the Mandelbrot set.",
+          "image": "https://example.com/fractal-explorer.png",
+          "tags": ["Mathematics", "Visualization"],
+          "link": "/#/topics/math/fractal-explorer",
+          "status": "active"
+        },
+        {
+          "name": "Matrix Calculator",
+          "description": "Perform basic matrix operations interactively.",
+          "image": "https://example.com/matrix-calculator.png",
+          "tags": ["Mathematics", "Interactive"],
+          "link": "/#/topics/math/matrix-calculator",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "topic": "Biology",
+      "description": "Explore living organisms, genetics, and ecosystems.",
+      "icon": "leaf",
+      "style": "bg-gradient-to-r from-green-500 to-teal-500 text-white",
+      "applications": [
+        {
+          "name": "Cell Explorer",
+          "description": "Click on cell organelles to learn their functions.",
+          "image": "https://example.com/cell-explorer.png",
+          "tags": ["Biology", "Interactive"],
+          "link": "/#/topics/bio/cell-explorer",
+          "status": "active"
+        },
+        {
+          "name": "DNA Base Pair Matching",
+          "description": "Drag and drop bases to form correct DNA pairs.",
+          "image": "https://example.com/dna-matching.png",
+          "tags": ["Biology", "Interactive"],
+          "link": "/#/topics/bio/dna-matching",
+          "status": "active"
+        },
+        {
+          "name": "Genetics Punnett Square",
+          "description": "Combine parent alleles to predict offspring genotypes.",
+          "image": "https://example.com/punnett-square.png",
+          "tags": ["Biology", "Interactive"],
+          "link": "/#/topics/bio/punnett-square",
+          "status": "active"
+        },
+        {
+          "name": "Food Chain Builder",
+          "description": "Create simple food chains by dragging plants and animals.",
+          "image": "https://example.com/food-chain.png",
+          "tags": ["Biology", "Interactive"],
+          "link": "/#/topics/bio/food-chain",
+          "status": "active"
+        },
+        {
+          "name": "Human Body Quiz",
+          "description": "Identify body parts on an interactive diagram.",
+          "image": "https://example.com/human-body-quiz.png",
+          "tags": ["Biology", "Quiz"],
+          "link": "/#/topics/bio/quiz",
+          "status": "active"
+        },
+        {
+          "name": "Plant Growth Stages",
+          "description": "Click through images showing stages from seed to mature plant.",
+          "image": "https://example.com/plant-growth.png",
+          "tags": ["Biology", "Interactive"],
+          "link": "/#/topics/bio/plant-growth",
+          "status": "active"
+        },
+        {
+          "name": "Animal Classification Sorter",
+          "description": "Drag animals into their correct classification groups.",
+          "image": "https://example.com/animal-classification.png",
+          "tags": ["Biology", "Interactive"],
+          "link": "/#/topics/bio/animal-classification",
+          "status": "inactive"
+        }
+      ]
+    },
+    {
+      "topic": "Computer Science",
+      "description": "Learn programming concepts and computational thinking.",
+      "icon": "laptop-code",
+      "style": "bg-gradient-to-r from-blue-500 to-purple-500 text-white",
+      "applications": [
+        {
+          "name": "Sorting Algorithm Visualizer",
+          "description": "Step through bubble sort and see how sorting works.",
+          "image": "https://example.com/sorting-visualizer.png",
+          "tags": ["Computer Science", "Visualization"],
+          "link": "/#/topics/cs/sorting-visualizer",
+          "status": "active"
+        },
+        {
+          "name": "Binary Converter",
+          "description": "Convert decimal numbers to binary with step-by-step explanation.",
+          "image": "https://example.com/binary-converter.png",
+          "tags": ["Computer Science", "Interactive"],
+          "link": "/#/topics/cs/binary-converter",
+          "status": "active"
+        },
+        {
+          "name": "Logic Gate Simulator",
+          "description": "Build simple circuits with AND, OR, NOT gates and test inputs.",
+          "image": "https://example.com/logic-gate.png",
+          "tags": ["Computer Science", "Simulation"],
+          "link": "/#/topics/cs/logic-gate",
+          "status": "active"
+        },
+        {
+          "name": "Code Output Quiz",
+          "description": "Guess output of simple code snippets before revealing answers.",
+          "image": "https://example.com/code-quiz.png",
+          "tags": ["Computer Science", "Quiz"],
+          "link": "/#/topics/cs/code-quiz",
+          "status": "active"
+        },
+        {
+          "name": "Array Manipulator",
+          "description": "Add and remove items from arrays and visualize changes.",
+          "image": "https://example.com/array-manipulator.png",
+          "tags": ["Computer Science", "Interactive"],
+          "link": "/#/topics/cs/array-manipulator",
+          "status": "active"
+        },
+        {
+          "name": "Binary Tree Builder",
+          "description": "Insert and delete nodes from a binary tree and see structure update.",
+          "image": "https://example.com/binary-tree.png",
+          "tags": ["Computer Science", "Visualization"],
+          "link": "/#/topics/cs/binary-tree",
+          "status": "active"
+        },
+        {
+          "name": "Turing Machine Simulator",
+          "description": "Build and run simple Turing machines to see tape and states.",
+          "image": "https://example.com/turing-machine.png",
+          "tags": ["Computer Science", "Simulation"],
+          "link": "/#/topics/cs/turing-machine",
+          "status": "active"
+        }
+      ]
+    }
+  ]

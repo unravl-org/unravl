@@ -6,12 +6,13 @@ const NotFound: React.FC = () => {
                 <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 animate__animated animate__fadeIn animate__delay-1s">
                     Oops! The page you are looking for could not be found.
                 </p>
-                <button
-                    onClick={() => window.history.back()}
-                    className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all transform hover:scale-105 duration-300"
-                >
-                    Go Back
-                </button>
+                <a href="/#"
+                     className="cursor-pointer text-blue-500 dark:text-blue-400 hover:underline animate__animated animate__fadeIn animate__delay-2s"
+                     style={{ textDecoration: 'none' }}
+                     onClick={() => window.history.back()}>
+                    <span className="inline-block mr-2">←</span>
+                    Go back to Home
+                </a>
             </div>
         </div>
     );
