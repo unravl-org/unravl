@@ -110,8 +110,7 @@ const SuperIcons: React.FC<SuperIconsProps> = memo(({
   onClick,
   useNativeColors = false,
 }) => {
-  // Memoized icon parsing
-  const { iconName, library, IconComponent } = useMemo(() => {
+  const { IconComponent } = useMemo(() => {
     const nameParts = name.split(':');
     let rawIconName = '';
     let providedLibrary = 'fontawesome';

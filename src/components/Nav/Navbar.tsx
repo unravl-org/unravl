@@ -38,17 +38,15 @@ const NavItem: React.FC<NavItemProps> = ({ name, href, icon: Icon, subLinks }) =
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     
     const currentPath = window.location.hash.replace('#/', '/#/');
-    
-    // Check if current item is active
-    const isActive = currentPath === href;
-    // debug
-    console.log(`currentPath: ${currentPath}, href: ${href}`);
+    const isActive = currentPath === href || (subLinks && subLinks.some(sub => currentPath === sub.href));
     return (
         <div className="relative">
             <a
                 href={href}
                 className={`block px-4 py-2 text-primary dark:text-primary-dark hover:bg-primary/20 dark:hover:bg-primary-dark/80 hover:text-accent 
-                dark:hover:text-accent-dark transition-colors duration-300 rounded-lg ${isActive ? 'bg-secondary/20 dark:bg-primary-dark/80' : ''}`}
+                dark:hover:text-accent-dark transition-colors duration-300 rounded-lg
+                ${isActive ? 'bg-accent/20 dark:bg-accent-dark/20 text-secondary dark:text-secondary-dark' : ''}
+                ${isDropdownOpen ? ' bg-secondary/60 dark:bg-primary-dark/60 text-accent dark:text-accent-dark' : ''}`}
 
                 onClick={(e) => {
                     if (subLinks && subLinks.length > 0) {
@@ -63,12 +61,13 @@ const NavItem: React.FC<NavItemProps> = ({ name, href, icon: Icon, subLinks }) =
             {subLinks && subLinks.length > 0 && (
                 <div
                     className={`
-                    absolute left-0 mt-2 w-48 bg-secondary/60 dark:bg-primary-dark/60 rounded-lg shadow-lg z-10
+                    left-0 mt-2 w-48 bg-secondary/60 dark:bg-primary-dark/60 rounded-lg shadow-lg z-10
                     ${isDropdownOpen ? 'block' : 'hidden'}
                     transition-all duration-300 ease-in-out backdrop-blur-xl
-                    rounded-lg border border-accent dark:border-accent-dark p-2
-                    flex flex-col space-y-1 text-nowrap
-                    `}
+                    rounded-lg lg:border border-accent dark:border-accent-dark
+                    flex flex-col space-y-1 text-nowrap w-full lg:w-auto lg:absolute lg:top-full lg:left-0 lg:mt-2
+                    ${isActive ? 'bg-accent/20 dark:bg-accent-dark/20 text-secondary dark:text-secondary-dark' : ''}
+                    ${isDropdownOpen ? ' bg-secondary/60 dark:bg-primary-dark/60 text-accent dark:text-accent-dark' : ''}`}
                     onMouseEnter={() => setIsDropdownOpen(true)}
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
@@ -129,7 +128,7 @@ const Navbar: React.FC = () => {
             `}
         >
             <div className="px-4 py-2 flex items-center justify-between">
-                <a href="/" className="flex items-center space-x-3">
+                <a href="/#/" className="flex items-center space-x-3">
                     {/* <img src={unravlLogoLight} alt="Unravel Logo Light" className="h-7 dark:hidden" /> */}
                     {/* <img src={unravlLogoDark} alt="Unravel Logo Dark" className="h-7 hidden dark:block" /> */}
                     <Logo />
@@ -147,7 +146,8 @@ const Navbar: React.FC = () => {
                     absolute top-full left-0 w-full lg:static lg:flex lg:items-center lg:space-x-4 lg:w-auto
                     transition-all duration-300 ease-in-out rounded-2xl  mt-2
                     ${isMenuOpen ? 'block' : 'hidden'} lg:block
-                    bg-secondary/70 dark:bg-secondary/60 lg:bg-transparent
+                    bg-secondary/70 dark:bg-secondary/60
+                    lg:bg-transparent lg:dark:bg-transparent
                     lg:backdrop-blur-none backdrop-blur-lg
                     border border-accent dark:border-accent-dark lg:border-0
                     p-4 lg:p-0

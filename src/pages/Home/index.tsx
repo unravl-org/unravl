@@ -112,7 +112,13 @@ const InteractiveApplicationBox: React.FC<{ name: string; description: string; i
                 {tags && tags.length > 0 && (
                     <div className="bottom-0 left-0 absolute px-2 pb-2 pt-5 flex flex-wrap gap-2 rounded-b-2xl w-full bg-gradient-to-t from-white/60 dark:from-black/50 to-transparent via-transparent">
                         {tags.map((tag, index) => (
-                            <span key={index} className="px-3 py-1 bg-slate-600 dark:bg-slate-700 text-white rounded-full text-sm">
+                            <span key={index} className="px-3 py-1 bg-slate-600 dark:bg-slate-700 text-white rounded-full text-sm
+                            border border-accent dark:border-accent-dark hover:bg-slate-500 dark:hover:bg-slate-600 transition-colors duration-300
+                            hover:scale-105 transform hover:shadow-lg cursor-pointer
+                            text-center
+                            flex items-center justify-center min-w-[80px] max-w-[150px] overflow-hidden text-ellipsis
+                            whitespace-nowrap
+                            ">
                                 {tag}
                             </span>
                         ))}
@@ -156,7 +162,7 @@ const TopicSection: React.FC<{ name: string; description: string; icon: string; 
                             tags={app.tags}
                             link={app.link}
                             status={app.status}
-                            className="bg-secondary dark:bg-primary hover:shadow-xl transition-shadow duration-300"
+                            className="bg-secondary dark:bg-primary hover:shadow-xl transition-shadow duration-300 m-4"
                         />
                     ))}
                 </div>
@@ -181,7 +187,7 @@ const Topic: React.FC = () => {
         setFilteredIndex(updatedIndex);
     }, [showUnavailable]);
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 my-10">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 my-10 m-3">
 
             <h2 className="text-3xl font-extrabold text-primary dark:text-primary-dark mb-6">Topics</h2>
             <p className="text-lg text-primary dark:text-primary-dark text-center">
@@ -215,7 +221,7 @@ const Topic: React.FC = () => {
                     </form>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8 mt-10 w-full px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 {filteredIndex.map((topic: Index, index: number) => (
                     <TopicSection
                         key={index}
