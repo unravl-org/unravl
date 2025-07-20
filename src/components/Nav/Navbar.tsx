@@ -1,7 +1,5 @@
 import React from 'react';
 
-import unravlLogoLight from '/src/assets/unravlorg-high-resolution-logo-light-transparent.svg';
-import unravlLogoDark from '/src/assets/unravlorg-high-resolution-logo-dark-transparent.svg';
 import { ModeSwitch } from '../Utils/ModeSwitch';
 import Logo from '../Utils/logo';
 import {
