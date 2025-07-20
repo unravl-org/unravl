@@ -36,33 +36,20 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ name, href, icon: Icon, subLinks }) => {
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-    const dropdownRef = React.useRef<HTMLDivElement>(null);
-
-    const handleClickOutside = (event: MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-            setIsDropdownOpen(false); // Close dropdown if clicked outside
-        }
-    };
-
-    const handleScroll = () => {
-        setIsDropdownOpen(false); // Close dropdown on scroll
-    };
-
-    React.useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
+    
+    const currentPath = window.location.hash.replace('#/', '/#/');
+    
+    // Check if current item is active
+    const isActive = currentPath === href;
+    // debug
+    console.log(`currentPath: ${currentPath}, href: ${href}`);
     return (
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative">
             <a
                 href={href}
-                className="block px-4 py-2 text-primary dark:text-primary-dark hover:bg-primary/20 dark:hover:bg-primary-dark/80 hover:text-accent 
-                dark:hover:text-accent-dark transition-colors duration-300 rounded-lg"
+                className={`block px-4 py-2 text-primary dark:text-primary-dark hover:bg-primary/20 dark:hover:bg-primary-dark/80 hover:text-accent 
+                dark:hover:text-accent-dark transition-colors duration-300 rounded-lg ${isActive ? 'bg-secondary/20 dark:bg-primary-dark/80' : ''}`}
+
                 onClick={(e) => {
                     if (subLinks && subLinks.length > 0) {
                         e.preventDefault(); // Prevent default link behavior if there are sublinks
@@ -76,12 +63,14 @@ const NavItem: React.FC<NavItemProps> = ({ name, href, icon: Icon, subLinks }) =
             {subLinks && subLinks.length > 0 && (
                 <div
                     className={`
-                    lg:absolute top-full mt-2 bg-secondary/70 backdrop-blur-lg dark:bg-secondary/70 lg:rounded-2xl shadow-lg z-10 w-full lg:w-48
-                    lg:border lg:border-accent dark:lg:border-accent-dark text-nowrap
-                    flex flex-col 
-                    transition-all duration-300 ease-in-out
-                    ${isDropdownOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 lg:hidden'}
-                    lg:opacity-100 lg:max-h-none`}
+                    absolute left-0 mt-2 w-48 bg-secondary/60 dark:bg-primary-dark/60 rounded-lg shadow-lg z-10
+                    ${isDropdownOpen ? 'block' : 'hidden'}
+                    transition-all duration-300 ease-in-out backdrop-blur-xl
+                    rounded-lg border border-accent dark:border-accent-dark p-2
+                    flex flex-col space-y-1 text-nowrap
+                    `}
+                    onMouseEnter={() => setIsDropdownOpen(true)}
+                    onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                     {subLinks.map((subLink) => (
                         <a
@@ -157,8 +146,14 @@ const Navbar: React.FC = () => {
                     className={`
                     absolute top-full left-0 w-full lg:static lg:flex lg:items-center lg:space-x-4 lg:w-auto
                     transition-all duration-300 ease-in-out rounded-2xl  mt-2
-                    ${isMenuOpen ? 'opacity-100 max-h-screen bg-secondary/10 dark:bg-primary-dark backdrop-blur-lg border-2 border-accent dark:border-accent-dark' : 'opacity-0 max-h-0'}
-                    lg:opacity-100 lg:max-h-none`}
+                    ${isMenuOpen ? 'block' : 'hidden'} lg:block
+                    bg-secondary/70 dark:bg-secondary/60 lg:bg-transparent
+                    lg:backdrop-blur-none backdrop-blur-lg
+                    border border-accent dark:border-accent-dark lg:border-0
+                    p-4 lg:p-0
+                    flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4
+                    `}
+
                 >
                     {NavbarLinks.map((link) => (
                         <NavItem key={link.name} {...link} />

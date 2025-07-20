@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, memo, useCallback } from 'react';
 import * as Fa from 'react-icons/fa';
 import * as Fa6 from 'react-icons/fa6';
 import * as Md from 'react-icons/md';
@@ -16,147 +16,163 @@ interface SuperIconsProps {
   className?: string;
   style?: React.CSSProperties;
   size?: 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
-  useNativeColors?: boolean;  // Add this line
+  useNativeColors?: boolean;
 }
 
-const SuperIcons: React.FC<SuperIconsProps> = ({
+// Cache for icon lookups to avoid repeated parsing
+const iconCache = new Map<string, React.ComponentType<any> | null>();
+
+// Pre-computed size map
+const SIZE_MAP: { [key: string]: number } = {
+  sm: 10,
+  base: 16,
+  lg: 32,
+  xl: 48,
+  '2xl': 64,
+  '3xl': 80,
+  '4xl': 96,
+  '5xl': 128
+} as const;
+
+// Optimized icon name normalization with caching
+const iconNameCache = new Map<string, string>();
+
+const normalizeIconName = (name: string): string => {
+  if (iconNameCache.has(name)) {
+    return iconNameCache.get(name)!;
+  }
+  
+  const normalized = name
+    .toLowerCase()
+    .trim()
+    .split(/[-_\s]+/)
+    .map((word, index) =>
+      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join('');
+  
+  iconNameCache.set(name, normalized);
+  return normalized;
+};
+
+// Optimized icon component lookup
+const getIconComponent = (iconName: string, library: string): React.ComponentType<any> | null => {
+  const cacheKey = `${iconName}:${library}`;
+  
+  if (iconCache.has(cacheKey)) {
+    return iconCache.get(cacheKey)!;
+  }
+  
+  const capitalizedName = iconName.charAt(0).toUpperCase() + iconName.slice(1);
+  let IconComponent: React.ComponentType<any> | null = null;
+  
+  switch (library) {
+    case 'devicon':
+      IconComponent = (Si as any)[`Si${capitalizedName}`] || (Di as any)[`Di${capitalizedName}`];
+      break;
+    
+    case 'fontawesome':
+    case 'fa':
+      IconComponent = (Fa as any)[`Fa${capitalizedName}`] || (Fa6 as any)[`Fa${capitalizedName}`];
+      break;
+    
+    case 'material':
+      IconComponent = (Md as any)[`Md${capitalizedName}`];
+      break;
+    
+    case 'grommet':
+      IconComponent = (Gi as any)[`Gi${capitalizedName}`];
+      break;
+
+    case 'pixelart':
+      IconComponent = (Pi as any)[`Pi${capitalizedName}`];
+      break;
+    
+    default:
+      IconComponent = (Si as any)[`Si${capitalizedName}`] ||
+                     (Di as any)[`Di${capitalizedName}`] ||
+                     (Fa as any)[`Fa${capitalizedName}`] ||
+                     (Fa6 as any)[`Fa${capitalizedName}`] ||
+                     (Gi as any)[`Gi${capitalizedName}`] ||
+                     (Md as any)[`Md${capitalizedName}`] ||
+                     (Pi as any)[`Pi${capitalizedName}`];
+  }
+  
+  iconCache.set(cacheKey, IconComponent);
+  return IconComponent;
+};
+
+const SuperIcons: React.FC<SuperIconsProps> = memo(({
   name,
   className,
   size = 'base',
   style,
   onClick,
-  useNativeColors = false,  // Add this line
+  useNativeColors = false,
 }) => {
-  let rawIconName = '';
-  let providedLibrary = 'fontawesome'; // Default to FontAwesome
+  // Memoized icon parsing
+  const { iconName, library, IconComponent } = useMemo(() => {
+    const nameParts = name.split(':');
+    let rawIconName = '';
+    let providedLibrary = 'fontawesome';
 
-  console.log('Socials component rendered with name:', name);
-  const nameParts = name.split(':');
-
-  // Dynamically handle name:iconname:provider and iconname:provider formats
-  if (nameParts.length > 1) {
-    rawIconName = nameParts[nameParts.length - 2]; // Second-to-last part is the icon name
-    providedLibrary = nameParts[nameParts.length - 1]; // Last part is the library
-  } else {
-    rawIconName = name; // Use the entire name as the icon name
-  }
- 
-  // Clean and normalize the icon name
-  const normalizeIconName = (name: string): string => {
-    return name
-      .toLowerCase()
-      .trim()
-      // Convert to camel case
-      .split(/[-_\s]+/)
-      .map((word, index) =>
-        index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
-      )
-      .join('');
-  };
-
-  // Clean the icon name
-  const iconName = normalizeIconName(rawIconName);
-
-  // Size mapping with consistent scaling
-  const sizeMap: { [key: string]: number } = {
-    sm: 10,     // 16px
-    base: 16,   // 24px
-    lg: 32,     // 32px
-    xl: 48,     // 48px
-    '2xl': 64,  // 64px
-    '3xl': 80,  // 80px
-    '4xl': 96,  // 96px
-    '5xl': 128  // 128px
-  };
-  const iconSize = sizeMap[size] || sizeMap.base;
-
-  // Get the appropriate icon component
-  const IconComponent = useMemo(() => {
-    const library = providedLibrary.toLowerCase();
-    const capitalizedName = iconName.charAt(0).toUpperCase() + iconName.slice(1);
-
-    // Debug logging - remove this after testing
-    console.log('Searching for icon:', {
-      rawIconName,
-      iconName,
-      capitalizedName: `Fa${capitalizedName}`,
-      library,
-      providedLibrary
-    });
-
-    switch (library) {
-      case 'devicon':
-        // Try Simple Icons first, then Devicons
-        return (Si as any)[`Si${capitalizedName}`] ||
-               (Di as any)[`Di${capitalizedName}`];
-     
-      case 'fontawesome':
-      case 'fa':
-        // Try main FontAwesome libraries only
-        const faIcon = (Fa as any)[`Fa${capitalizedName}`] ||
-                      (Fa6 as any)[`Fa${capitalizedName}`];
-        
-        if (!faIcon) {
-          console.log('Available FA icons starting with Fa:', 
-            Object.keys(Fa).filter(key => key.startsWith('Fa')).slice(0, 10)
-          );
-        }
-        
-        return faIcon;
-     
-      case 'material':
-        // Try Material Icons
-        return (Md as any)[`Md${capitalizedName}`];
-      
-      case 'grommet':
-        // Try Grommet Icons (react-icons/gi)
-        return (Gi as any)[`Gi${capitalizedName}`];
-
-      case 'pixelart':
-        // Try Pixelart Icons (react-icons/pi)
-        return (Pi as any)[`Pi${capitalizedName}`];
-     
-      default:
-        // Try all available libraries
-        return (Si as any)[`Si${capitalizedName}`] ||
-               (Di as any)[`Di${capitalizedName}`] ||
-               (Fa as any)[`Fa${capitalizedName}`] ||
-               (Fa6 as any)[`Fa${capitalizedName}`] ||
-               (Gi as any)[`Gi${capitalizedName}`] ||
-               (Md as any)[`Md${capitalizedName}`] ||
-               (Pi as any)[`Pi${capitalizedName}`];
+    if (nameParts.length > 1) {
+      rawIconName = nameParts[nameParts.length - 2];
+      providedLibrary = nameParts[nameParts.length - 1];
+    } else {
+      rawIconName = name;
     }
-  }, [iconName, providedLibrary]);
+
+    const normalizedIconName = normalizeIconName(rawIconName);
+    const component = getIconComponent(normalizedIconName, providedLibrary.toLowerCase());
+
+    return {
+      iconName: normalizedIconName,
+      library: providedLibrary,
+      IconComponent: component
+    };
+  }, [name]);
+
+  const iconSize = SIZE_MAP[size] || SIZE_MAP.base;
+
+  // Memoized container style
+  const containerStyle = useMemo(() => ({
+    display: 'inline-flex' as const,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    width: iconSize,
+    height: iconSize,
+    transition: 'all 0.2s ease-in-out',
+    cursor: onClick ? 'pointer' : 'default',
+    fontSize: iconSize,
+    color: useNativeColors ? 'inherit' : style?.color,
+    willChange: onClick ? 'transform' : 'auto', // Optimize for interactions
+    ...style,
+  }), [iconSize, onClick, useNativeColors, style]);
+
+  // Memoized click handler
+  const handleClick = useCallback(() => {
+    onClick?.();
+  }, [onClick]);
 
   if (!IconComponent) {
-    console.warn(`Icon not found: ${iconName} in library ${providedLibrary}`);
     return null;
   }
-
   return (
     <div
-      onClick={onClick}
+      onClick={handleClick}
       className={className}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: iconSize,
-        height: iconSize,
-        transition: 'all 0.2s ease-in-out',
-        cursor: onClick ? 'pointer' : 'default',
-        fontSize: iconSize,
-        color: useNativeColors ? 'inherit' : style?.color, // Add this line
-        ...style,
-      }}
+      style={containerStyle}
     >
       <IconComponent 
         size={iconSize} 
-        color={useNativeColors ? 'currentColor' : undefined}  // Add this line
+        color={useNativeColors ? 'currentColor' : undefined}
       />
     </div>
   );
-};
+});
+
+SuperIcons.displayName = 'SuperIcons';
 
 export { SuperIcons };
 
