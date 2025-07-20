@@ -3,7 +3,7 @@ import AppRouter from './routes/AppRouter';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [setCursorPosition] = useState({ x: 0, y: 0 });
+  const [, setCursorPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
